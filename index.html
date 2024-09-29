@@ -43,35 +43,28 @@
         }
 
         #letter {
-            opacity: 0;
             display: none;
             background-color: white;
             border-radius: 10px;
-            width: 40%;
+            width: 80%; /* Mobile-friendly width */
             max-width: 600px;
-            padding: 30px;
+            padding: 20px; /* Reduced padding */
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
             position: absolute;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
             text-align: left;
-            transition: opacity 1s ease-in-out;
-        }
-
-        #letter.show {
-            display: block;
-            opacity: 1; /* Show the letter with opacity */
         }
 
         #letter h2 {
             color: #ff6666;
-            font-size: 36px;
+            font-size: 28px; /* Adjusted font size */
             text-align: center;
         }
 
         #letter p {
-            font-size: 18px;
+            font-size: 16px; /* Adjusted font size */
             color: #333;
             line-height: 1.6;
         }
@@ -84,7 +77,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px; /* Adjusted font size */
             transition: background-color 0.3s ease;
             display: block;
             margin: 20px auto 0;
@@ -137,6 +130,30 @@
             }
         }
 
+        /* Responsive adjustments for mobile */
+        @media (max-width: 600px) {
+            #letter {
+                width: 90%; /* Takes almost full width on mobile */
+            }
+
+            #letter h2 {
+                font-size: 24px; /* Smaller header on mobile */
+            }
+
+            #letter p {
+                font-size: 14px; /* Smaller text on mobile */
+            }
+
+            #openLetterBtn {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+
+            #letter .close-btn {
+                font-size: 14px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -145,35 +162,39 @@
         <button id="openLetterBtn">Open Love Letter 💌</button>
     </div>
 
-   
     <div id="letter">
         <h2>My Love,</h2>
         <p>
-            I just wanted to take a moment to let you know how much you mean to me.
+            I want to say thank you for being with me during these 3 years of our relationship, whatever the occasion is. 
             For every day that has passed in the past three years, my love for you just keeps deepening and getting even stronger. 
-            Your smile, and simply the presence that you give me makes my world shine brighter than anyone else could.
+            Your smile – the act of kindness – and simply the presence that you give me makes my world shine brighter than anyone else could.
         </p>
         <p>
-            From the moment we met, I knew you are the one. I feel blessed to have you in my life.
-            Thank you for being by my side, supporting, and loving me unconditionally.
+            I felt you were one of a kind the one time we first crossed each other’s path. 
+            Just imagine how much I enjoy being with you now, let alone these past three years that have just taught me to appreciate all the goodness in your soul and the love in your heart. 
+            It is such a true and immense honor to be your partner and to have you by my side loving, supporting, and being there for me.
         </p>
         <p>
-            I look forward to every second I get to spend with you, and I can’t wait for all the adventures we will share together in the future.
-            You are my everything maam.
+            From all those times that we shared it just gives me happiness to recall it and imagine the many more that are still in store for us. 
+            Each moment RETURNS is every second I’m fortunate to spend with you and most importantly the moments building our future. 
+            You are the love of my life and always will be.
+        </p>
+        <p>
+            My dear, today is 3 years since we celebrated our anniversary, so happy anniversary. 
+            Happy anniversary to us - Here’s to many more years of laughter, love, and memories.
         </p>
         <p>With all my heart, ILOVEYOU PO.</p>
-        
+        <p><strong>Yours forever,</strong></p>
         <p><strong>Nathalie<3</strong></p>
         <button class="close-btn" onclick="closeLetter()">Close Letter</button>
     </div>
-    
+
     <!-- Audio for background music -->
     <audio id="backgroundMusic" loop>
         <source src="PALAGI.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
-    <!-- JavaScript to handle heart animations and fade effect -->
     <script>
         const openLetterBtn = document.getElementById('openLetterBtn');
         const letter = document.getElementById('letter');
@@ -197,27 +218,22 @@
             setInterval(createHeart, 300);
         }
 
-        // Open the letter with fade-in effect, play music and start hearts
+        // Open the letter, start hearts animation, and play music
         openLetterBtn.addEventListener('click', function() {
             letter.style.display = 'block';
-            setTimeout(() => {
-                letter.classList.add('show');
-            }, 10);  // Delay for fade-in
             openLetterBtn.style.display = 'none';
             startHearts(); // Start floating hearts animation
             backgroundMusic.play(); // Play the background music
         });
 
-        // Close the letter with fade-out effect and pause music
+        // Close the letter and pause the music
         function closeLetter() {
-            letter.classList.remove('show');
-            setTimeout(() => {
-                letter.style.display = 'none';
-                openLetterBtn.style.display = 'block';
-                backgroundMusic.pause(); // Stop the background music
-            }, 1000);  // Wait for fade-out transition before hiding
+            letter.style.display = 'none';
+            openLetterBtn.style.display = 'block';
+            backgroundMusic.pause(); // Stop the background music
         }
     </script>
 
 </body>
 </html>
+
