@@ -25,19 +25,17 @@
             width: 100vw;
             background-color: #ffe6e6;
             position: relative;
-            padding: 20px; /* Padding for mobile */
         }
 
         #openLetterBtn {
-            padding: 10px 20px; /* Reduced padding */
-            font-size: 18px; /* Reduced font size */
+            padding: 15px 25px;
+            font-size: 20px;
             color: white;
             background-color: #ff4d4d;
             border: none;
             border-radius: 25px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            width: 100%; /* Full width for mobile */
         }
 
         #openLetterBtn:hover {
@@ -45,41 +43,48 @@
         }
 
         #letter {
+            opacity: 0;
             display: none;
             background-color: white;
             border-radius: 10px;
-            width: 90%; /* 90% width for mobile */
-            max-width: 400px; /* Limit max width for mobile */
-            padding: 15px; /* Reduced padding */
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            width: 40%;
+            max-width: 600px;
+            padding: 30px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
             position: absolute;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
             text-align: left;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #letter.show {
+            display: block;
+            opacity: 1; /* Show the letter with opacity */
         }
 
         #letter h2 {
             color: #ff6666;
-            font-size: 22px; /* Reduced font size */
+            font-size: 36px;
             text-align: center;
         }
 
         #letter p {
-            font-size: 14px; /* Reduced font size */
+            font-size: 18px;
             color: #333;
-            line-height: 1.4; /* Adjust line height for mobile */
+            line-height: 1.6;
         }
 
         #letter .close-btn {
             margin-top: 20px;
-            padding: 8px 15px; /* Reduced padding */
+            padding: 10px 20px;
             background-color: #ff6666;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 14px; /* Reduced font size */
+            font-size: 18px;
             transition: background-color 0.3s ease;
             display: block;
             margin: 20px auto 0;
@@ -140,6 +145,7 @@
         <button id="openLetterBtn">Open Love Letter 💌</button>
     </div>
 
+   
     <div id="letter">
         <h2>My Love,</h2>
         <p>
@@ -153,20 +159,21 @@
         </p>
         <p>
             I look forward to every second I get to spend with you, and I can’t wait for all the adventures we will share together in the future.
-            You are my everything, ma'am.
+            You are my everything maam.
         </p>
         <p>With all my heart, ILOVEYOU PO.</p>
         
         <p><strong>Nathalie<3</strong></p>
         <button class="close-btn" onclick="closeLetter()">Close Letter</button>
     </div>
-
+    
     <!-- Audio for background music -->
     <audio id="backgroundMusic" loop>
         <source src="PALAGI.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
+    <!-- JavaScript to handle heart animations and fade effect -->
     <script>
         const openLetterBtn = document.getElementById('openLetterBtn');
         const letter = document.getElementById('letter');
@@ -190,19 +197,25 @@
             setInterval(createHeart, 300);
         }
 
-        // Open the letter, start hearts animation, and play music
+        // Open the letter with fade-in effect, play music and start hearts
         openLetterBtn.addEventListener('click', function() {
             letter.style.display = 'block';
+            setTimeout(() => {
+                letter.classList.add('show');
+            }, 10);  // Delay for fade-in
             openLetterBtn.style.display = 'none';
             startHearts(); // Start floating hearts animation
             backgroundMusic.play(); // Play the background music
         });
 
-        // Close the letter and pause the music
+        // Close the letter with fade-out effect and pause music
         function closeLetter() {
-            letter.style.display = 'none';
-            openLetterBtn.style.display = 'block';
-            backgroundMusic.pause(); // Stop the background music
+            letter.classList.remove('show');
+            setTimeout(() => {
+                letter.style.display = 'none';
+                openLetterBtn.style.display = 'block';
+                backgroundMusic.pause(); // Stop the background music
+            }, 1000);  // Wait for fade-out transition before hiding
         }
     </script>
 
